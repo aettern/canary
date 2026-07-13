@@ -44,25 +44,6 @@ A Cowrie SSH honeypot deployed on AWS with automated log forwarding to a self-ho
 ./scripts/down.sh
 ```
 
-## Project Structure
-
-```
-canary/
-├── scripts/
-│   ├── up.sh                    # terraform init + apply
-│   └── down.sh                  # terraform destroy
-├── terraform/
-│   ├── main.tf                  # EC2 instance, security group, AMI lookup
-│   ├── variables.tf             # input variables (all secrets marked sensitive)
-│   ├── outputs.tf               # public IP output
-│   ├── cloud-init.yaml.tpl      # bootstrap script (Tailscale, Wazuh, Cowrie)
-│   └── terraform.tfvars.example # example config
-└── wazuh-local/
-    ├── README.md                # how to run Wazuh manager locally
-    └── rules/
-        └── cowrie_rules.xml     # custom Wazuh rules for Cowrie events
-```
-
 ## Wazuh Rules
 
 Custom rules are in [`wazuh-local/rules/cowrie_rules.xml`](wazuh-local/rules/cowrie_rules.xml). They cover:
